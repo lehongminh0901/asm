@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= h1_title %></h1>
+    <h2><%= h2_title %></h2>
+    
+      
+    <%
+    //Display data table by JavaScript
+    if (userData.rowCount == 0)
+    {
+    %>  
+    <p>No data found</p>
+    <%  
+    } else {
+      // Display table header
+    %> 
+    <table border="1">
+      <tr>
+        <th>Product Name </th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Shop Name</th>
+        <th>Edit/Insert</th>
+        <th>Delete</th>
+      </tr>
+    <%  
+      // Display all rows , Object data : userData
+      //all rows: userData.rows, list array [...]
+      userData.rows.forEach( function(row) {
+        //Display a row
+        console.log(row);
+    %>
+      <tr>
+        <td><%= row.product_name %></td>
+        <td><%= row.price %></td>
+        <td><%= row.amount %></td>
+        <td><%= row.shop_name %></td>
+        <td><a href='users/edit/<%= row.product_name%>'>Edit</a> </td>
+        <td><a href='users/delete/<%= row.product_name%>'>Delete</a> </td>
+      </tr>
+    <%
+      });
+    %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><a href='users/insert'>Insert</a> </td>
+        <td></td>
+      </tr>
+    </table> 
+    <%
+    }
+     %>
+    
+  </body>
+</html>
